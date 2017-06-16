@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>dynamics</id>
+    <version>1.0.0</version>
+    <title>Dynamic Patterns</title>
+    <authors>Péter Juhász</authors>
+    <owners>Péter Juhász</owners>
+    <projectUrl>http://dynamics.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Dynamic Patterns is a library that contains design patterns built on the Dynamic Language Runtime. Patterns implemented: Snapshot, Combine, Multicast, LoadBalance, DynamicDictionary.</description>
+    <summary>Contains patterns that are built using dynamic objects.</summary>
+    <copyright>Péter Juhász</copyright>
+    <language>en-US</language>
+    <tags>dynamic dlr pattern</tags>
+  </metadata>
+</package>

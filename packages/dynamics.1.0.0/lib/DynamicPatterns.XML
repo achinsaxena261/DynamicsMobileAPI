@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DynamicPatterns</name>
+    </assembly>
+    <members>
+        <member name="T:System.Collections.Dynamic.DynamicDictionary">
+            <summary>
+            Provides access to a string-object dictionary directly through member access.
+            </summary>
+        </member>
+        <member name="M:System.Collections.Dynamic.DynamicDictionary.#ctor(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Initializes a new instance of the DynamicDictionary from an already existing dictionary.
+            </summary>
+            <param name="dictionary"></param>
+        </member>
+        <member name="M:System.Collections.Dynamic.DynamicDictionary.#ctor">
+            <summary>
+            Initializes a new instance of the DynamicDictionary that is empty.
+            </summary>
+        </member>
+        <member name="P:System.Collections.Dynamic.DynamicDictionary.Count">
+            <summary>
+            Gets the number of elements contained in the dictionary.
+            </summary>
+        </member>
+        <member name="T:System.Dynamic.Dynamics">
+            <summary>
+            Contains the main operators for building dynamic objects.
+            </summary>
+        </member>
+        <member name="M:System.Dynamic.Dynamics.Snapshot(System.Object)">
+            <summary>
+            Creates a snapshot of all property values of an object.
+            </summary>
+            <param name="obj">The object to create a snapshot of.</param>
+            <returns>Returns a snapshot of the object.</returns>
+            <remarks>This operator is not intended to use with primitive types.</remarks>
+            <example>
+            Counter counter = new Counter();
+            counter.Value++;
+            
+            // create a snapshot of counter
+            dynamic snapshot = Dynamics.Snapshot(counter);
+            
+            // change the counter
+            counter.Value++;
+            
+            // snapshot still shows the old value
+            Console.WriteLine(snapshot.Value);
+            </example>
+        </member>
+        <member name="M:System.Dynamic.Dynamics.Proxy(System.Object)">
+            <summary>
+            Wraps an object into a dynamic proxy.
+            </summary>
+            <param name="obj">The object to wrap.</param>
+            <returns>Returns the specified object as a dynamic one.</returns>
+        </member>
+        <member name="M:System.Dynamic.Dynamics.Combine(System.Object[])">
+            <summary>
+            Combines multiple objects into a single one.
+            </summary>
+            <param name="objects">The objects to combine.</param>
+            <returns>The combined objects.</returns>
+            <remarks></remarks>
+            <example>
+            public class C1
+            {
+            	public int A { get; set; }
+            }
+            public class C2
+            {
+            	public int B { get; set; }
+            }
+            
+            dynamic m = Dynamics.Combine(new C1 { A = 1 }, new C2 { B = 2 });
+            Console.WriteLine(m.A);
+            Console.WriteLine(m.B);
+            </example>
+        </member>
+        <member name="M:System.Dynamic.Dynamics.Multicast(System.Object[])">
+            <summary>
+            Handles multiple objects as one, performs every operation on each object.
+            </summary>
+            <param name="objects">The target objects.</param>
+            <returns>Returns a proxy that replicates every operation on each object contained in the collection.</returns>
+            <remarks></remarks>
+            <example>
+            dynamic allAsOne = Dynamics.Multicast(recipients);
+            allAsOne.Say("Hello");
+            </example>
+        </member>
+        <member name="M:System.Dynamic.Dynamics.LoadBalance``1(``0[])">
+            <summary>
+            Distributes operations across multiple objects of the same kind.
+            </summary>
+            <typeparam name="T">The type of the target objects.</typeparam>
+            <param name="objects">The target objects that provide the same service.</param>
+            <returns></returns>
+            <remarks>The load balancer uses the Round-robin method to distribute operations.</remarks>
+            <example>
+            IService s1, s2;
+            
+            dynamic lb = Dynamics.LoadBalance&lt;IService&gt;(s1, s2);
+            lb.DoWork(1);
+            lb.DoWork(2);
+            </example>
+        </member>
+        <member name="T:System.Dynamic.LoadBalancerObject`1">
+            <summary>
+            Represents a proxy that distributes operations across multiple objects of the same kind.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:System.Dynamic.LoadBalancerObject`1.AdvanceInstanceIndex">
+            <summary>
+            Advances instance pointer to the next one.
+            </summary>
+        </member>
+        <member name="M:System.Dynamic.LoadBalancerObject`1.GetNextInstance">
+            <summary>
+            Gets the current instance.
+            </summary>
+        </member>
+        <member name="T:System.Dynamic.CombinedObject">
+            <summary>
+            Represents a proxy that combines multiple objects into a single one.
+            </summary>
+        </member>
+        <member name="T:System.Dynamic.ObjectSnapshot">
+            <summary>
+            Represents a snapshot of an object.
+            </summary>
+        </member>
+        <member name="T:System.Dynamic.MulticastObject">
+            <summary>
+            Represents a proxy that handles multiple objects as one, performs every operation on each object.
+            </summary>
+        </member>
+    </members>
+</doc>
